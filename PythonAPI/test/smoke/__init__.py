@@ -31,8 +31,7 @@ class SmokeTest(unittest.TestCase):
         self.world = self.client.get_world()
 
     def tearDown(self):
-        self.client.load_world("Town03")
-        self.world = None
+        self.client.load_world("BaseMap")
         self.client = None
 
 
