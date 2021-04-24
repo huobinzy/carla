@@ -44,10 +44,11 @@ In this section you will find details of system requirements, minor and major so
 * [__Python3 x64__](https://www.python.org/downloads/) is the main scripting language in CARLA. Having a x32 version installed may cause conflict, so it is highly advisable to have it uninstalled.
 
 !!! Important
-    Be sure that the above programs are added to the [environment path](https://www.java.com/en/download/help/path.xml). Remember that the path added should correspond to the progam's `bin` directory.  
+    Be sure that the above programs are added to the [environment path](https://www.java.com/en/download/help/path.xml). Remember that the path added should correspond to the progam's `bin` directory. Python path may not be the 'bin' directory. It may be '...\AppData\Local\Programs\Python\Python39',  '...\AppData\Local\Programs\Python\Python39\Scripts', '...\AppData\Roaming\Python\Python39' or '...\AppData\Roaming\Python\Python39\Scripts'. If Python path are not added to [environment path](https://www.java.com/en/download/help/path.xml), the Python dependencies will not be installed correctly.
+    
 #### Python dependencies
 
-Run the following command to install the dependencies for the Python API client:
+Run the following command in cmd window or Windows PowerShell to install the dependencies for the Python API client:
 
     pip3 install --user setuptools
 
@@ -61,7 +62,7 @@ Get the 2017 version of Visual Studio from [here](https://developerinsider.co/do
 * __.NET framework 4.6.2__. In the _Workloads_ section, choose __.NET desktop development__ and then in the _Installation details_ panel on the right, select `.NET Framework 4.6.2 development tools`. This is required to build Unreal Engine. 
 
 !!! Important
-    Other Visual Studio versions may cause conflict. Even if these have been uninstalled, some registers may persist. To completely clean Visual Studio from the computer, go to `Program Files (x86)\Microsoft Visual Studio\Installer\resources\app\layout` and run `.\InstallCleanup.exe -full`  
+    Other Visual Studio versions may cause conflict. Even if these have been uninstalled, some registers may persist. To completely clean Visual Studio from the computer, go to `Program Files (x86)\Microsoft Visual Studio\Installer\resources\app\layout` and run `.\InstallCleanup.exe -full`.
 
 ##### Unreal Engine
 
@@ -71,13 +72,13 @@ To build the modified version, follow the commands listed below to download the 
 
 To build the modified version of Unreal Engine:
 
-1. In a terminal, navigate to the location you want to save Unreal Engine and clone the 4.24 branch:
+1. In a terminal, cmd window or Windows PowerShell, navigate to the location you want to save Unreal Engine and clone the 4.24 branch:
 
         git clone --depth=1 -b 4.24 https://github.com/EpicGames/UnrealEngine.git
 
 
     !!! Note 
-        Keep the Unreal Engine folder as close as `C:\\` as you can because if the path exceeds a certain length then `Setup.bat` will return errors in step 3.
+        Keep the Unreal Engine folder as close as `C:\\` as you can because if the path exceeds a certain length then `Setup.bat` will return errors in step 3. If you can not clone or download UnrealEngine, even found UnrealEngine repository from Github, you should firstly apply to join in Epic Games organization in Github.
 
 2. Inside Unreal Engine's source folder, download the patch and apply it:
 
@@ -174,7 +175,7 @@ There are two parts to the build process for CARLA, compiling the client and com
 
         make PythonAPI
 
-    __Note that when the compilation is done, you may see a successful output in the terminal even if the compilation of the Python API client was unsuccessful.__ Check for any errors in the terminal output and check that a `.egg` file exists in `PythonAPI\carla\dist`. If you come across any errors, check the [F.A.Q.](build_faq.md) or post in the [CARLA forum](https://forum.carla.org/c/installation-issues/linux).
+    __Note that when the compilation is done, you may see a successful output in the terminal even if the compilation of the Python API client was unsuccessful.__ Check for any errors in the terminal output and check that a `.egg` file exists in `PythonAPI\carla\dist`. If you come across any errors, check the [F.A.Q.](build_faq.md) or post in the [CARLA forum](https://forum.carla.org/c/installation-issues/linux). Pay attention please, if you installed git, but not build any repository in local directory, you must come across an error 'fatal: not a git repository (or any of the parent directories) : .git'. You must fix it by adding folder "c:\carla" to repository, and adding a new commit.
 
 
 2. __Compile the server__:
